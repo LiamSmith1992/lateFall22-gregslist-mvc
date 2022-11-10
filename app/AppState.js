@@ -1,4 +1,5 @@
 import { Car } from "./Models/Car.js"
+import { House } from "./Models/House.js"
 import { Value } from "./Models/Value.js"
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
@@ -15,6 +16,25 @@ class AppState extends EventEmitter {
   cars = loadState('cars', [Car])
   /** @type {import('./Models/Car').Car|null} */
   activeCar = null
+
+  homes = [
+    new House({
+      bedrooms: 3,
+      bathrooms: 2.5,
+      squareFoot: 12122,
+      address: '1111 N. This Rd.',
+      imageURL: 'https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/home-improvement/wp-content/uploads/2022/07/download-23.jpg',
+      price: 200000
+    }),
+    new House({
+      bedrooms: 0,
+      bathrooms: 1,
+      squareFoot: 50,
+      address: '2020 E. Toilet Ln.',
+      imageURL: 'https://cottagelife.com/wp-content/uploads/2014/07/shutterstock_93840280-copy-e1406580203437.jpg',
+      price: '40 chickens'
+    })
+  ]
 }
 
 export const appState = new Proxy(new AppState(), {
